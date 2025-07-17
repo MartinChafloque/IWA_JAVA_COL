@@ -24,16 +24,19 @@ steps:
     mavenAuthenticateFeed: false
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
-- task: FortifyOnDemandStatic@8
+
+- task: FortifyOnDemandStatic@9
   inputs:
-    FortifyProjects: '$(Build.Repository.LocalPath)'
-    FodConnection: 'FoD_AMS'    # create Azure DevOps Service connection with name FoD_AMS
+    FortifyProjects: 
+    FodConnection: 'FOD_AZURE'
     ReleaseOptions: '0'
-    ReleaseId: 00000            # update FoD RELEASE ID
-    EntitlementSelection: '1'
-    EntitlementPreference: '2'
+    ReleaseId: 1542718
+    EntitlementSelection: '0'
+    Entitlement: 13738
+    EntitlementPreference: '1'
     OverrideScanSettings: '2'
-    InProgressScanActionType: '0'
-    RemediationScanPreference: '2'
+    InProgressScanActionType: '2'
+    RemediationScanPreference: '0'
     BuildType: 'mvn'
+    BuildCommand: 'clean package'
     PolicyFailAction: '0'
