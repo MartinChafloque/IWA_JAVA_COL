@@ -26,6 +26,10 @@ jobs:
       - name: Ensure MSYS2 bash shell works
         run: echo "_RUN_SCRIPTS_DIR=${PWD}/scripts" >> $GITHUB_ENV
         shell: bash
+      - name: Add Maven to PATH (Windows PowerShell)
+        run: |
+          $env:PATH += ";C:\Program Files\Maven\apache-maven-3.9.11-bin\apache-maven-3.9.11\bin"
+        shell: pwsh
       - name: Run ScanCentral SAST & Debricked scan
         uses: fortify/github-action/sc-sast-scan@v2
         with:
