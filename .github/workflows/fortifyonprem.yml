@@ -10,10 +10,10 @@ on:
 
 jobs:
   Fortify-OnPrem-AST-Scan:
-    runs-on: self-hosted
+    runs-on: [self-hosted, windows]
     defaults:
       run:
-        shell: bash
+        shell: pwsh
     permissions:
       actions: read
       contents: read
@@ -22,7 +22,10 @@ jobs:
     
     steps:    
       - name: Check out source code
-        uses: actions/checkout@v4  
+        uses: actions/checkout@v4
+      - name: Ensure MSYS2 bash shell works
+        run: echo "_RUN_SCRIPTS_DIR=${PWD}/scripts" >> $GITHUB_ENV
+        shell: bash
       - name: Run ScanCentral SAST & Debricked scan
         uses: fortify/github-action/sc-sast-scan@v2
         with:
