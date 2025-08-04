@@ -24,7 +24,7 @@ jobs:
       - name: Check out source code
         uses: actions/checkout@v4  
       - name: Run ScanCentral SAST & Debricked scan
-        uses: fortify/github-action@v1.4.1
+        uses: fortify/github-action@v2.1.0
         with:
           sast-scan: true
           debricked-sca-scan: false
