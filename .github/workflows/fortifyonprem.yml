@@ -11,6 +11,9 @@ on:
 jobs:
   Fortify-OnPrem-AST-Scan:
     runs-on: self-hosted
+    defaults:
+      run:
+        shell: bash
     permissions:
       actions: read
       contents: read
