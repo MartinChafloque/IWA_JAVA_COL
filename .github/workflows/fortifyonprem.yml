@@ -10,10 +10,7 @@ on:
 
 jobs:
   Fortify-OnPrem-AST-Scan:
-    runs-on: [self-hosted, windows]
-    defaults:
-      run:
-        shell: pwsh
+    runs-on: self-hosted
     permissions:
       actions: read
       contents: read
@@ -24,7 +21,7 @@ jobs:
       - name: Check out source code
         uses: actions/checkout@v4  
       - name: Run ScanCentral SAST & Debricked scan
-        uses: fortify/github-action@v2.1.0
+        uses: fortify/github-action/sc-sast-scan@v2
         with:
           sast-scan: true
           debricked-sca-scan: false
